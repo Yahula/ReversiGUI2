@@ -6,6 +6,7 @@ package TheGame.GameCode;
 public class Game {
 
     private Board myboard;
+    private int boardSize;
     private GameRules gamerules;
     private Player[] players = new Player[2];
     private boolean isRemoteGame = false;
@@ -62,7 +63,7 @@ public class Game {
     public int playerPlay(Player player) {
         Disk d;
 
-        if (this.gamerules.canPlay(myboard, player)) {
+        if (this.gamerules.canPlay(myboard, player.pNum)) {
             boolean thereWasAMove;
             d = new Disk(player.move());
 

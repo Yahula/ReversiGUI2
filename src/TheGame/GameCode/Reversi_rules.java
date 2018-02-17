@@ -8,15 +8,34 @@ public class Reversi_rules extends GameRules {
     public Reversi_rules(){}
 
 
+    public boolean canPlay(Board b,int p) {
+
+        for (int i = 1; i <= b.getRow(); ++i) {
+            for (int j = 1; j <= b.getColumn(); ++j) {
+                if(b.getCell(i,j)==0){
+                    int[] lookarray = new int[8];
+                    lookAround(b,new Disk(i,j,p),lookarray);
+                    for (int k = 0; k < 8; ++k) {
+                        if (lookarray[k]==1) {
+                            boolean bol =  lookForDisk(b, new Disk(i,j,p), k, false);
+                            if(bol){return bol;}
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 
     public boolean play(Board board, Disk disk){
         boolean didHePlayd = false;
 
         //checks if to move is ok
-        if (disk.getRow() > board.getRow() || disk.getRow() < 0 || disk.getColumn() < 0 || disk.getColumn() > board.getColumn()) {
+        if (disk.getRow() > board.getRow() || disk.getRow() < 0 || disk.getColumn() < 0 || disk.getColumn() > board.getColumn()) {//inside the board bounds
             return didHePlayd;
         }
-        if (board.getCell(disk.getRow(),disk.getColumn()) != 0) {
+        if (board.getCell(disk.getRow(),disk.getColumn()) != 0) {//cell already occupied
             return didHePlayd;
         }
 
@@ -85,7 +104,7 @@ public class Reversi_rules extends GameRules {
         boolean isthereadisk = false;
 
         if (direction==0){
-            for (int i = 2; i <= d.getColumn(); ++i) {
+            for (int i = 2; i < d.getColumn(); ++i) {
                 if(b.getCell(d.getRow(),d.getColumn()-i)==0){
                     break;
                 }
@@ -95,8 +114,8 @@ public class Reversi_rules extends GameRules {
                             for (int j = i - 1; j > 0; --j) {
                                 b.setCell(new Disk(d.getRow(), d.getColumn()-j, d.getColor()));
                             }
-                            if(d.getColor()==1){updateScore(i,1);}
-                            else{updateScore(i,2);}
+//                            if(d.getColor()==1){updateScore(b);}
+//                            else{updateScore(b);}
                         }
                         isthereadisk = true;
                         break;
@@ -105,15 +124,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==1){
-            for (int i = 2; i <= d.getColumn()&&i<=d.getRow(); ++i) {
+            for (int i = 2; i < d.getColumn()&&i<d.getRow(); ++i) {
                 if (b.getCell(d.getRow()-i,d.getColumn()-i)==0){break;}
                 if(b.getCell(d.getRow()-i,d.getColumn()-i)==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()-j, d.getColumn()-j , d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -121,15 +140,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==2){
-            for (int i = 2; i <= d.getRow(); ++i) {
+            for (int i = 2; i < d.getRow(); ++i) {
                 if (b.getCell(d.getRow()-i,d.getColumn())==0){break;}
                 if(b.getCell(d.getRow()-i,d.getColumn())==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()-j, d.getColumn(), d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -137,15 +156,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==3){
-            for (int i = 2; d.getColumn()+i < b.getColumn()&&i<=d.getRow(); ++i) {
+            for (int i = 2; d.getColumn()+i <= b.getColumn()&&i<d.getRow(); ++i) {
                 if (b.getCell(d.getRow()-i,d.getColumn()+i)==0){break;}
                 if(b.getCell(d.getRow()-i,d.getColumn()+i)==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()-j, d.getColumn()+j, d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -153,15 +172,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==4){
-            for (int i = 2; d.getColumn()+i < b.getColumn(); ++i) {
+            for (int i = 2; d.getColumn()+i <= b.getColumn(); ++i) {
                 if (b.getCell(d.getRow(),d.getColumn()+i)==0){break;}
                 if(b.getCell(d.getRow(),d.getColumn()+i)==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow(), d.getColumn()+j, d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -169,15 +188,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==5){
-            for (int i = 2; d.getColumn()+i < b.getColumn()&& d.getRow()+i<b.getRow(); ++i) {
+            for (int i = 2; d.getColumn()+i <= b.getColumn()&& d.getRow()+i<=b.getRow(); ++i) {
                 if (b.getCell(d.getRow()+i,d.getColumn()+i)==0){break;}
                 if(b.getCell(d.getRow()+i,d.getColumn()+i)==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()+j, d.getColumn()+j, d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -185,15 +204,15 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==6){
-            for (int i = 2; d.getRow()+i<b.getRow(); ++i) {
+            for (int i = 2; d.getRow()+i<=b.getRow(); ++i) {
                 if (b.getCell(d.getRow()+i,d.getColumn())==0){break;}
                 if(b.getCell(d.getRow()+i,d.getColumn())==d.getColor()){
                     if(changePath){
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()+j, d.getColumn(), d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -201,7 +220,7 @@ public class Reversi_rules extends GameRules {
             }
         }
         if (direction==7){
-            for (int i = 2; i <= d.getColumn() && d.getRow()+i < b.getRow(); ++i) {
+            for (int i = 2; i < d.getColumn() && d.getRow()+i <= b.getRow(); ++i) {
                 if (b.getCell(d.getRow()+i,d.getColumn()-i)==0){break;}
                 if(b.getCell(d.getRow()+i,d.getColumn()-i)==d.getColor()){
                     if(changePath){
@@ -209,8 +228,8 @@ public class Reversi_rules extends GameRules {
                         for (int j = i-1; j > 0; --j) {
                             b.setCell(new Disk(d.getRow()+j, d.getColumn()-j, d.getColor()));
                         }
-                        if(d.getColor()==1){updateScore(i,1);}
-                        else{updateScore(i,2);}
+//                        if(d.getColor()==1){updateScore(b);}
+//                        else{updateScore(b);}
                     }
                     isthereadisk = true;
                     break;
@@ -220,23 +239,5 @@ public class Reversi_rules extends GameRules {
         return isthereadisk;
     }
 
-    public boolean canPlay(Board b,Player p) {
 
-        for (int i = 0; i < b.getRow(); ++i) {
-            for (int j = 0; j < b.getColumn(); ++j) {
-                if(b.getCell(i,j)==0){
-                    int[] lookarray = new int[8];
-                    lookAround(b,new Disk(i,j,p.getpNum()),lookarray);
-                    for (int k = 0; k < 8; ++k) {
-                        if (lookarray[k]==1) {
-                            boolean bol =  lookForDisk(b, new Disk(i,j,p.getpNum()), k, false);
-                            if(bol){return bol;}
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
 }

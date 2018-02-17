@@ -1,4 +1,4 @@
 First=-1
-Black=0x663366ff
-White=0xffffffff
-Size=8
+Black=PURPLE
+White=WHITE
+Size=4

@@ -2,16 +2,14 @@
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-
 <?import javafx.scene.text.Text?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheGame.GUI.GameController" fx:id="root" spacing="10">
 
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheGame.GUI.GameController" fx:id="root" spacing="10">
     <VBox spacing="10">
-        <Text fx:id="welcomeText" text="Score:"  />
+        <Text fx:id="welcomeText" text="Score:" underline="true" />
         <Label fx:id="BlackScore" text="Black:   2"/>
         <Label fx:id="WhiteScore" text="White:   2"  />
         <Text fx:id="Turn" text="Black's turn"  />
         <Button fx:id="settings" text="Settings" onAction="#openSettings"/>
-
     </VBox>
 </HBox>

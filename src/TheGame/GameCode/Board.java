@@ -17,6 +17,7 @@ public class Board {
                 board[i][j] = 0;
             }
         }
+
         board[row/2-1][column/2-1] = 1;
         board[row/2][column/2] = 1;
         board[row/2-1][column/2] = -1;

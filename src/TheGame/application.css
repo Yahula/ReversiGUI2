@@ -1,6 +1,7 @@
 /*.root {*/
     /*-fx-background-image: url("background.jpeg")*/
 /*}*/
+
 .label {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
@@ -12,6 +13,10 @@
 }
 #welcomeText {
     -fx-font-size: 32px;
-    -fx-font-family: Arial;
+    -fx-fill: rgb(85,87,83);
+}
+
+#titleText{
+    -fx-font-size: 18px;
     -fx-fill: rgb(85,87,83);
 }
