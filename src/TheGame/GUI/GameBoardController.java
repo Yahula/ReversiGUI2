@@ -10,30 +10,19 @@ import javafx.scene.paint.Color;
 
 import java.io.*;
 
-
 public class GameBoardController extends GridPane {
     private static Board board;
     private static GameRules rules;
     private static int currnetPlayer;
-    private static int[] score = new int[2];
     private static GameController game;
     private static Color blackColor;
     private static Color whiteColor;
     private static Tile[][] boardTiles;
-    public static int TILE_SIZE;
-//    private static final int FREE = 0;
-//    private static final int WHITE = 1;
-//    private static final int BLACK = -1;
-
     private Group tileGroup = new Group();
-    private Group diskGroup = new Group();
-
 
     public GameBoardController(GameController g) {
         int size = 8;
         String fileName = new File("").getAbsolutePath() + "/src/TheGame/GameSettings.txt";
-
-
         try {
 
             FileReader fileReader = new FileReader(fileName);
@@ -82,8 +71,6 @@ public class GameBoardController extends GridPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
     }
 
     public void draw() {
@@ -91,8 +78,7 @@ public class GameBoardController extends GridPane {
         tileGroup.getChildren().clear();
         this.getChildren().addAll(tileGroup);
         int height = (int) this.getPrefHeight();
-        TILE_SIZE = height / board.getRow();
-
+        int TILE_SIZE = height / board.getRow();
 
         for (int i = 1; i <= board.getRow(); i++) {
             for (int j = 1; j <= board.getColumn(); j++) {
@@ -124,11 +110,9 @@ public class GameBoardController extends GridPane {
             }
         }
         getRules().updateScore(GameBoardController.getBoard());
-        score = rules.getScore();
+        int[] score = rules.getScore();
         game.updateVisibleScore(score);
-
     }
-
 
     public static GameRules getRules() {
         return rules;
@@ -150,6 +134,7 @@ public class GameBoardController extends GridPane {
     public static Color getBlackColor() {
         return blackColor;
     }
+
     public static Color getWhiteColor() {
         return whiteColor;
     }

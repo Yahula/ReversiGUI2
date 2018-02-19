@@ -11,11 +11,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-import static java.lang.Thread.sleep;
-
-/**
- * Created by sagi on 17/01/2018.
- */
 public class Tile extends StackPane {
     private int size, row, col;
     ;
@@ -44,7 +39,7 @@ public class Tile extends StackPane {
         getChildren().addAll(border);
         GameBoardController.setCurrnetPlayer(GameBoardController.getCurrnetPlayer());
         setOnMouseClicked(event -> {
-            boolean thereWasAMove= false;
+            boolean thereWasAMove = false;
             if (event.getButton() == MouseButton.PRIMARY) {
                 Disk disk = new Disk(row, col, GameBoardController.getCurrnetPlayer());
                 try {
@@ -63,21 +58,23 @@ public class Tile extends StackPane {
                     GameBoardController.updateTiles();
                     GameBoardController.setCurrnetPlayer(-GameBoardController.getCurrnetPlayer());
 
-                    if (!GameBoardController.getRules().canPlay(GameBoardController.getBoard(), GameBoardController.getCurrnetPlayer())) { //next player cant play
+                    if (!GameBoardController.getRules().canPlay(GameBoardController.getBoard(),
+                            GameBoardController.getCurrnetPlayer())) { //next player cant play
                         if (flag == 1) {
                             GameBoardController.getRules().updateScore(GameBoardController.getBoard());
                             endGameWindow();
                         } else if (flag == 0) { //next player can play
                             flag = 1;
-                            if (!GameBoardController.getRules().canPlay(GameBoardController.getBoard(), GameBoardController.getCurrnetPlayer())) { //next player cant play
+                            if (!GameBoardController.getRules().canPlay(GameBoardController.getBoard(),
+                                    GameBoardController.getCurrnetPlayer())) { //next player cant play
                                 GameBoardController.getRules().updateScore(GameBoardController.getBoard());
                                 endGameWindow();
                             }
                         }
-                    }else if (GameBoardController.getBoard().isBoardfull()) { //board is full
+                    } else if (GameBoardController.getBoard().isBoardfull()) { //board is full
                         endGameWindow();
-                    } else{
-                        flag=0;
+                    } else {
+                        flag = 0;
                     }
 
                 } else {
@@ -97,11 +94,10 @@ public class Tile extends StackPane {
 //                    }
 //                    getChildren().add(border);
 //                    getChildren().remove(tmpBorder);
-                    
+
                 }
             }
         });
-
     }
 
     private Circle blackDisk() {
@@ -110,11 +106,6 @@ public class Tile extends StackPane {
 
     private Circle whiteDisk() {
         return new Circle(size / 2.5, whiteColor);
-    }
-
-
-    public int getColor() {
-        return color;
     }
 
     public void setColor(int color) {
@@ -127,7 +118,7 @@ public class Tile extends StackPane {
         }
     }
 
-    public void endGameWindow(){
+    public void endGameWindow() {
         Stage stage = new Stage();
         try {
             VBox root = FXMLLoader.load(getClass().getResource("EndGame.fxml"));
@@ -140,6 +131,5 @@ public class Tile extends StackPane {
             e.printStackTrace();
         }
     }
-
 }
 

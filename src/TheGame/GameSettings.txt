@@ -1,4 +1,4 @@
 First=-1
-Black=PURPLE
+Black=BLACK
 White=WHITE
-Size=4
+Size=8
