@@ -1,4 +1,4 @@
-package TheGame.GameCode;
+package GameCode;
 
 public abstract class GameRules {
     private int[] score = new int[2];

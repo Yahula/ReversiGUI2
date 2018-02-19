@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Reversi">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/exe/Reversi.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

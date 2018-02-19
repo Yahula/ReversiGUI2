@@ -1,4 +1,4 @@
-package TheGame.GameCode;
+package GameCode;
 
 public class Reversi_rules extends GameRules {
 

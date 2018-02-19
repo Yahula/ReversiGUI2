@@ -1,4 +1,4 @@
-package TheGame.GameCode;
+package GameCode;
 
 public class Board {
     private int[][] board;

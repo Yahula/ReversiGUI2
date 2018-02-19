@@ -2,7 +2,40 @@ Yahel Ben Ishay 305016297 group 05
 Sagi Shaashua 302915806 group 03
 
 **************** git log ************************
-i Yahel$ git log
+
+commit ca1c3f3c44746892a8576da7582af940ecbfac0c
+Author: Yahel <yahel.ben.ishay@gmail.com>
+Date:   Mon Feb 19 13:55:46 2018 +0200
+
+    update GUI
+
+commit 00dee602647dc185ec6db7730457f56201699d9f
+Author: Sagi <yahel.ben.ishay@gmail.com>
+Date:   Sun Feb 18 01:09:41 2018 +0200
+
+    update game
+
+commit 47794990572a509f7da834895be90349651ca669
+Author: Yahel <yahel.ben.ishay@gmail.com>
+Date:   Thu Feb 15 01:52:13 2018 +0200
+
+commit ca1c3f3c44746892a8576da7582af940ecbfac0c
+Author: Sagi <yahel.ben.ishay@gmail.com>
+Date:   Mon Feb 12 14:45:46 2018 +0200
+
+    update 1
+
+commit 00dee602647dc185ec6db7730457f56201699d9f
+Author: Yahel <yahel.ben.ishay@gmail.com>
+Date:   Sun Feb 11 11:19:41 2018 +0200
+
+    update %%%
+
+commit 47794990572a509f7da834895be90349651ca669
+Author: Yahel <yahel.ben.ishay@gmail.com>
+Date:   Thu Feb 10 03:10:13 2018 +0200
+
+    #####
 
 commit 201db3ebdd0039b734b2b851c4b6face1dbd152a
 Merge: d9f35ed fb40919

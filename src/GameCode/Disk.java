@@ -1,4 +1,4 @@
-package TheGame.GameCode;
+package GameCode;
 
 import javafx.scene.layout.StackPane;
 
